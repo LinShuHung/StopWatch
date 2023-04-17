@@ -4,11 +4,15 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.SimpleAdapter;
 
 import androidx.annotation.NonNull;
 
 import com.suhun.stopwatch.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,6 +25,10 @@ public class StopWatch {
     private Timer timer;
     private MyTask myTask;
     private UIHandler uiHandler;
+    private SimpleAdapter simpleAdapter;
+    private List<HashMap<String, String>> data;
+    private String[] from = {"lapKey"};
+    private int[] to ={R.id.list_item};
 
     private class MyTask extends TimerTask{
         @Override
@@ -54,6 +62,13 @@ public class StopWatch {
         this.timer = new Timer();
         this.uiHandler = new UIHandler();
         this.counter = 0;
+        initListView();
+    }
+
+    private void initListView(){
+        data = new ArrayList<HashMap<String, String>>();
+        simpleAdapter = new SimpleAdapter(context, data, R.layout.item, from, to);
+        binding.lapData.setAdapter(simpleAdapter);
     }
 
     public void doLeft(){
