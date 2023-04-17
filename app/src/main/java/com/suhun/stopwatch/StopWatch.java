@@ -72,7 +72,23 @@ public class StopWatch {
     }
 
     public void doLeft(){
+        if(isStart){
+            doLap();
+        }else {
+            doReset();
+        }
+    }
 
+    private void doLap(){
+        HashMap<String, String> listViewItemData = new HashMap<>();
+        listViewItemData.put(from[0], binding.clock.getText().toString());
+        data.add(0, listViewItemData);
+        simpleAdapter.notifyDataSetChanged();
+    }
+
+    private void doReset(){
+        data.clear();
+        simpleAdapter.notifyDataSetChanged();
     }
 
     public void doRight(){
@@ -98,6 +114,14 @@ public class StopWatch {
             counter = 0;
             binding.leftBtn.setText("Reset");
             binding.rightBtn.setText("Start");
+        }
+    }
+
+    public void resetAll(){
+        if(myTask != null){
+            myTask.cancel();
+            myTask = null;
+            counter = 0;
         }
     }
 }

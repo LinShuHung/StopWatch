@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void leftFButton(View view){
-
+        stopWatch.doLeft();
     }
 
     public void rightButton(View view){
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void exitButton(View view){
-
+        stopWatch.resetAll();
+        finish();
     }
 }
