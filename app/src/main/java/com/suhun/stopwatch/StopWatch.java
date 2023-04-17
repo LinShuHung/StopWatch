@@ -35,8 +35,17 @@ public class StopWatch {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            binding.clock.setText(""+ counter);
+            binding.clock.setText(counterToClock(counter));
         }
+    }
+
+    private static String counterToClock(int counterTemp){
+        int ms = counterTemp % 100;
+        int ts = counterTemp / 100;
+        int hh = ts / (60*60);
+        int mm = (ts - hh*60*60) / 60;
+        int ss = ts % 60;
+        return String.format("%d:%d:%d.%d", hh, mm, ss, ms);
     }
 
     public StopWatch(Context context, ActivityMainBinding binding){
@@ -71,6 +80,7 @@ public class StopWatch {
         if(myTask != null){
             myTask.cancel();
             myTask = null;
+            counter = 0;
             binding.leftBtn.setText("Reset");
             binding.rightBtn.setText("Start");
         }
