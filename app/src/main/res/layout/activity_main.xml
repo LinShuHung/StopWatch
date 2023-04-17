@@ -1,11 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/clockLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/clock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="00::00:00."
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_margin="4dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/buttonLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/clockLine"
+        >
+        <Button
+            android:id="@+id/leftBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:text="Reset"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_margin="4dp"
+            android:onClick="leftFButton"
+            />
+        <Button
+            android:id="@+id/rightBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:text="Start"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_margin="4dp"
+            android:onClick="rightButton"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lineBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+        <Button
+            android:id="@+id/exitBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:text="Exit"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_margin="4dp"
+            android:onClick="exitButton"
+            />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/lapData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonLine"
+        android:layout_above="@id/lineBottom"
+        />
+</RelativeLayout>
